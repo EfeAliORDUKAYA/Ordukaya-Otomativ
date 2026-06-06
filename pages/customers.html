@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Müşteriler - ORDUKAYA OTOMOTİV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Eğer body'de .light-theme veya .light sınıfı varsa sol menüyü ayarla */
+        
+        body.light-theme .sidebar,
+        body.light-theme .left-menu,
+        .light .sidebar {
+            background-color: #f8f9fa !important;
+            /* Sol menü arka planı açık gri/beyaz */
+            border-right: 1px solid #dee2e6;
+        }
+        /* Sol menünün içindeki tüm yazıları, linkleri ve başlıkları siyah yap */
+        
+        body.light-theme .sidebar a,
+        body.light-theme .sidebar span,
+        body.light-theme .sidebar i,
+        body.light-theme .left-menu a,
+        body.light-theme .left-menu span {
+            color: #212529 !important;
+            /* Yazıları görünür koyu füme/siyah yapar */
+        }
+        /* Fareyle üzerine gelindiğinde (Hover) yazıların rengi */
+        
+        body.light-theme .sidebar a:hover,
+        body.light-theme .left-menu a:hover {
+            background-color: #e9ecef !important;
+            color: #000000 !important;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Inter", sans-serif;
+            background: #081028;
+            color: white;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        /* TOPBAR */
+        
+        .topbar {
+            height: 90px;
+            background: #111827;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+        
+        .top-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        
+        .back-btn {
+            border: none;
+            background: #1e293b;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        .back-btn:hover {
+            background: #334155;
+        }
+        
+        .page-title {
+            font-size: 30px;
+            font-weight: 700;
+        }
+        /* MAIN */
+        
+        .container {
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+        }
+        /* FORM */
+        
+        .form {
+            width: 340px;
+            background: #111827;
+            border-radius: 24px;
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+        
+        .form h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 14px;
+            border: none;
+            outline: none;
+            background: #0f172a;
+            color: white;
+            border-radius: 14px;
+            font-size: 15px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 14px;
+            background: #2563eb;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+        }
+        /* TABLE */
+        
+        .list {
+            flex: 1;
+        }
+        
+        .table-box {
+            background: #111827;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .table-header {
+            padding: 25px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: #0f172a;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        
+        th,
+        td {
+            padding: 18px;
+            text-align: left;
+        }
+        
+        tr {
+            border-bottom: 1px solid #1e293b;
+            transition: .2s;
+        }
+        
+        tbody tr:hover {
+            background: #0f172a;
+            cursor: pointer;
+        }
+        
+        .debt {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .delete-btn {
+            border: none;
+            background: #dc2626;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div class="top-left">
+
+            <button class="back-btn" onclick="history.back()">
+                ← Geri
+            </button>
+
+            <div class="page-title">
+                Müşteriler
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="container">
+
+        <!-- FORM -->
+
+        <div class="form">
+
+            <h2>➕ Yeni Müşteri</h2>
+
+            <input id="name" class="input" placeholder="Müşteri Adı">
+
+            <input id="phone" class="input" maxlength="14" placeholder="0555 555 55 55">
+
+            <button id="addBtn" class="btn">
+                Müşteri Kaydet
+            </button>
+
+        </div>
+
+        <!-- LIST -->
+
+        <div class="list">
+
+            <div class="table-box">
+                <div class="table-header">
+
+                    <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        gap:20px;
+                        flex-wrap:wrap;">
+
+                        <div>
+                            👥 Müşteri Listesi
+                        </div>
+
+                        <input id="searchInput" class="input" placeholder="Müşteri ara..." style="
+                            width:280px;
+                            margin:0;
+                            background:#0f172a;
+                            ">
+
+                    </div>
+
+                </div>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Telefon</th>
+                            <th>Borç</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbody"></tbody>
+
+
+                </table>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 15px; padding: 20px; background: #0f172a;">
+                    <button id="prevPageBtn" class="back-btn" style="margin:0; padding: 10px 20px;">← Önceki</button>
+                    <span id="pageInfo" style="font-weight: 600; color: #94a3b8;">Sayfa 1 / 1</span>
+                    <button id="nextPageBtn" class="back-btn" style="margin:0; padding: 10px 20px;">Sonraki →</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../assets/customers.js"></script>
+
+</body>
+
+</html>

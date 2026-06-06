@@ -1,0 +1,4 @@
+# Örnek: Büyük veritabanı veya yedek dosyalarını engellemek için
+*.zip
+*.tar.gz
+*.sql

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>ORDUKAYA OTOMOTİV</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div>
+            <div class="logo-area">
+                <div class="logo-box">
+                    <img src="../images/Logo1.png" alt="Logo">
+                </div>
+                <div>
+                    <h1>ORDUKAYA</h1>
+                    <p>OTOMOTİV</p>
+                </div>
+            </div>
+
+            <ul>
+                <li class="active"><span>Dashboard</span></li>
+                <li onclick="window.location.href='products.html'"><span>Ürünler</span></li>
+                <li onclick="window.location.href='customers.html'"><span>Müşteriler</span></li>
+                <li onclick="window.location.href='vehicle.html'"><span>Araçlar</span></li>
+                <li onclick="window.location.href='sales.html'"><span>Satışlar</span></li>
+                <li onclick="window.location.href='sales-history.html'"><span>Son Satışlar</span></li>
+                <li onclick="window.location.href='randevu.html'"><span>Randevular</span></li>
+                <li onclick="window.location.href='cash.html'"><span>Kasa</span></li>
+                <li onclick="window.location.href='settings.html'"><span>Ayarlar</span></li>
+            </ul>
+        </div>
+
+        <div class="bottom-text">
+            <h2 id="companyTitleSidebar">ORDUKAYA OTOMOTİV</h2> © 2026
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="topbar">
+            <div>
+                <h2 id="companyTitle">ORDUKAYA OTOMOTİV</h2>
+                <p>Yönetim Paneli</p>
+            </div>
+            <button class="admin-btn">Yönetici</button>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <span>Günlük Kazanç</span>
+                <h1 id="dailyProfit">₺0</h1>
+            </div>
+            <div class="card">
+                <span>Toplam Ürün</span>
+                <h1 id="totalProducts">0</h1>
+            </div>
+            <div class="card">
+                <span>Düşük Stok</span>
+                <h1 id="lowStock">0</h1>
+            </div>
+            <div class="card">
+                <span>Kasa Durumu</span>
+                <h1 id="cash">₺0</h1>
+            </div>
+        </div>
+
+        <div class="status-board">
+            <div class="status-card serviste">
+                <h3>Serviste</h3>
+                <div id="servisteCount">0</div>
+            </div>
+            <div class="status-card hazir">
+                <h3>Hazır</h3>
+                <div id="hazirCount">0</div>
+            </div>
+            <div class="status-card teslim">
+                <h3>Teslim Edildi</h3>
+                <div id="teslimCount">0</div>
+            </div>
+        </div>
+
+        <div class="table-area">
+            <div class="table-header">
+                <h2>Son Satışlar</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Müşteri</th>
+                        <th>Ürün</th>
+                        <th>Adet</th>
+                        <th>Tutar</th>
+                        <th>Tarih</th>
+                    </tr>
+                </thead>
+                <tbody id="salesBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+<script src="../assets/dashboard.js"></script>
+
+</html>
