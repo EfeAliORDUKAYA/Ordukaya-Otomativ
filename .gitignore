@@ -1,4 +1,4 @@
-# Örnek: Büyük veritabanı veya yedek dosyalarını engellemek için
-*.zip
-*.tar.gz
-*.sql
+node_modules/
+dist/
+release/
+out/

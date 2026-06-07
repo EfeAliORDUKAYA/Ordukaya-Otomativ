@@ -3,6 +3,10 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const { autoUpdater } = require("electron-updater");
 const path = require('path');
 const fs = require('fs');
+if (require('electron-squirrel-startup')) {
+    app.quit();
+}
+
 
 // Veritabanı dosyasını garantiye almak için güvenli kullanıcı verisi klasörüne taşıyoruz
 const dbPath = path.join(app.getPath('userData'), 'database.db');
@@ -131,14 +135,17 @@ db.serialize(() => {
 /* ========================================== */
 function createWindow() {
     const win = new BrowserWindow({
+
         width: 1400,
         height: 900,
         webPreferences: {
             preload: path.join(__dirname, "preload.js"),
             contextIsolation: true,
-            nodeIntegration: false
+            nodeIntegration: false,
         }
+
     });
+    win.setMenu(null);
 
     win.loadFile("pages/dashboard.html");
 }
@@ -149,7 +156,37 @@ app.whenReady().then(() => {
         if (err) console.error("Eski randevular silinirken hata:", err);
     });
 
-    createWindow();
+    const splash = new BrowserWindow({
+        width: 500,
+        height: 500,
+        frame: false,
+        transparent: false,
+        resizable: false,
+        alwaysOnTop: true
+    });
+
+    splash.loadFile("pages/splash.html");
+
+    const win = new BrowserWindow({
+        width: 1400,
+        height: 900,
+        show: false,
+        webPreferences: {
+            preload: path.join(__dirname, "preload.js"),
+            contextIsolation: true,
+            nodeIntegration: false
+        }
+    });
+
+    win.loadFile("pages/dashboard.html");
+
+    setTimeout(() => {
+
+        splash.close();
+
+        win.show();
+
+    }, 2700);
 
     if (app.isPackaged) {
         autoUpdater.checkForUpdatesAndNotify();

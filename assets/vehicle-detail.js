@@ -367,7 +367,25 @@ document.getElementById("saveEditBtn").addEventListener("click", async() => {
     alert("Araç güncellendi");
     await loadVehicle();
 });
+document
+.getElementById("deleteVehicleBtn")
+.onclick = async () => {
 
+    const ok = confirm(
+        "Araç silinsin mi?"
+    );
+
+    if (!ok) return;
+
+    await window.api.deleteVehicle(
+        vehicleId
+    );
+
+    alert("Araç silindi");
+
+    location.href =
+        "vehicle.html";
+};
 /* ===================== */
 /* FORMAT DATE      */
 /* ===================== */
